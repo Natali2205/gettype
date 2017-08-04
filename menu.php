@@ -1,39 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-        <title> </title>
-  
-    </head>
-	<body>	
+<div class="row">
+    <div class="col-md-3 ">
+        <nav id="menuVertical">
+            <ul class="navigator">
+                <li class="active"><a href="#">Strings</a>
+                <li><a href="?task=1" target="_self">register symbols</a></li>
+                <li><a href="?task=2">work with strlen</a></li>
+                <li><a href="?task=3">work with substr</a></li>
+                <li><a href="?task=4">work with substr</a></li>
+                <li><a href="?task=5">work with str_replace</a></li>
+                <li><a href="?task=6">work with strlen</a></li>
+                <li><a href="?task=7">work with strtr</a></li>
+                <li><a href="?task=8">work with substr_replace</a></li>
+                <li><a href="?task=9">work with strpos, strrpos</a></li>
+                <li><a href="?task=10">work with explode, implode</a></li>
+                <li><a href="?task=11">work with str_split</a></li>
+                <li><a href="?task=12">work with trim, ltrim, rtrim</a></li>
+                <li><a href="?task=13">work with strrev</a></li>
+                <li><a href="?task=14">work with str_shuffle</a></li>
+                <li><a href="?task=15">work with number_format</a></li>
+                <li><a href="?task=16">work with str_repeat</a></li>
+                <li><a href="?task=17">work with strip_tags, htmlspecialchars</a></li>
+                <li><a href="?task=18">work with chr, ord</a></li>
+                <li><a href="?task=19">work with strchr, strrchr</a></li>
+                <li><a href="?task=20">work with strstr</a></li>
+                <li class="nav-header">Arrays</li>
+                </li>
 
+            </ul>
+        </nav>
+    </div>
 
-
-<nav id="menuVertical">
-			<ul class="nav">
-				<li class="nav-header"></li>
-				<li class="active"><a href="#">Strings</a></li>
-				<li><a href="Tasks/1.html" target="_self">Робота з регістром символів</a></li>
-				<li><a href="Tasks/2.html">Робота з strlen</a></li>
-				<li><a href="Tasks/3.html">Робота з substr</a></li>
-				<li><a href="#">Робота з substr</a></li>
-				<li><a href="#">Робота з str_replace</a></li>
-				<li><a href="#">Робота з strlen</a></li>
-				<li><a href="#">Робота з strtr</a></li>
-				<li><a href="#">Робота з substr_replace</a></li>
-				<li><a href="#">Робота з strpos, strrpos</a></li>
-				<li><a href="#">Робота з explode, implode</a></li>
-				<li><a href="#">Робота з str_split</a></li>
-				<li><a href="#">Робота з trim, ltrim, rtrim</a></li>
-				<li><a href="#">Робота з strrev</a></li>
-				<li><a href="#">Робота з str_shuffle</a></li>
-				<li><a href="#">Робота з number_format</a></li>
-				<li><a href="#">Робота з str_repeat</a></li>
-				<li><a href="#">Робота з strip_tags, htmlspecialchars</a></li>
-				<li><a href="#">Робота з chr, ord</a></li>
-				<li><a href="#">Робота з strchr, strrchr</a></li>
-				<li><a href="#">Робота з strstr</a></li>
-				<li class="nav-header">Arrays</li>
-
-			</ul>
-	</nav>

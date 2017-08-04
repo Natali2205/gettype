@@ -29,12 +29,12 @@ ul {
     overflow: hidden;
     background-color: 	 #bfbfbf;
 }
-#menuVertical{
+/*#menuVertical{
     width: 200px;
     height: auto;
     position: fixed;
     z-index: 5;
-}
+}*/
 .container2{
     background:#0080C0;
     width:500px; 
