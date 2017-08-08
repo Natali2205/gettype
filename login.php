@@ -4,7 +4,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 if ($username === "BilNil" && $password === "secret") {
     $_SESSION["customer"] = 1;
-} else if ($username === "NilBil" && $password === "flow") {
+} else if ($username === "NilBil" && $password === "secret1") {
     $_SESSION["customer"] = 2;
 }
 if ($_SESSION["customer"]) {
@@ -20,10 +20,6 @@ if ($_SESSION["customer"]) {
             <td></td>
             <td>Login</td>
         </tr>
-        <?php if(isset($_SESSION['username'])): ?>
-        <p>You are logged in as <?=$_SESSION['username']?></p>
-        <p><a href="?logout">Logout</a></p>
-        <?php else: ?>
         <tr>
             <td>Username</td>
             <td><input name="username" type="text" value="<?php echo $username; ?>"></td>
@@ -39,5 +35,3 @@ if ($_SESSION["customer"]) {
     </table>
 </form>
 </div>
-
-<?php endif; ?>
