@@ -1,4 +1,4 @@
-﻿<link href="css/styletasks.css" rel="stylesheet">
+<link href="css/styletasks.css" rel="stylesheet">
 <div>
     <ul>
     <strong><h3>Работа с strlen</h3></strong><br>

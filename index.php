@@ -11,17 +11,21 @@ if (isset($_GET['login'])) {
 if (isset($_GET['logout'])) {
     unset($_SESSION);
 }
+ 
+
 
 ?>
     <div>
         <?php
         if ($_SESSION["customer"] === 1) {
             echo "Welcome BilNil";
+		
         } else if ($_SESSION["customer"] === 2) {
             echo "Welcome NilBil";
         } else {
             echo "Welkome ..";
         }
+		
         ?>
     </div>
 <?php

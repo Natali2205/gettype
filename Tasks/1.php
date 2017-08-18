@@ -102,7 +102,7 @@
 
         <h3>Завдання 6.</h3> Дана строка <b>'LONDON'</b>. Сделайте из нее строку <b>'London'.</b>.
 
-        <div class="example"> Початковий вигляд (якщо він існує):<br><?php echo $a; ?></div>
+        <div class="example"> Початковий вигляд (якщо він існує):<br><?php echo $a='LONDON'; ?></div>
         <div class="example"> Результат виконання:<br>
             <?php
             $a = 'LONDON';
@@ -119,7 +119,26 @@
             </div>
         </div>
 
-        <b>Завдання 7.</b> Дана строка <b>'Лондон'. Зробити з неї <b>'ЛОНДОН'.</b>
+        <b>Завдання 7.</b> Дана строка <b>'Лондон'. Сделайте из нее строку <b>'ЛОНДОН'.</b>
+		$str = 'Лондон';
+$str = mb_strtoupper($str);
+echo $str;
+<div class="example"> Початковий вигляд (якщо він існує):<br><?php echo $a='LONDON'; ?></div>
+        <div class="example"> Результат виконання:<br>
+            <?php
+            $str = 'Лондон';
+			$str = mb_strtoupper($str);
+			echo $str;
+            ?>
+        </div>
+        <div class="example">
+            <h3>Код PHP</h3>
+            <div class="rezult">
+				$str = 'Лондон';<br>
+				$str = mb_strtoupper($str);<br>
+				echo $str;<br>
+            </div>
+        </div>
 
 
     </ul>
