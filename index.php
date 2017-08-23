@@ -1,33 +1,44 @@
-<?php session_start();
+<?php 
 require 'header.php';
-if (isset($_GET['login'])) {
-    if (isset($_POST['customer']) && !empty($_POST['customer'])) {
-        echo "Yes, username is set";
-    } else {
-        echo "N0, username is not set";
-    }
-    require_once __DIR__ . '/login.php';
-}
-if (isset($_GET['logout'])) {
-    unset($_SESSION);
-}
- 
+	include('function.php');
+
+	if (!isLoggedIn()) {
+		$_SESSION['msg'] = "You must log in first";
+		require_once __DIR__ . '/login.php';
+	}
 
 
 ?>
-    <div>
-        <?php
-        if ($_SESSION["customer"] === 1) {
-            echo "Welcome BilNil";
+
+	<div class="content">
 		
-        } else if ($_SESSION["customer"] === 2) {
-            echo "Welcome NilBil";
-        } else {
-            echo "Welkome ..";
-        }
-		
-        ?>
-    </div>
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
+		<!-- logged in user information -->
+		<div class="profile_info">
+
+			<div>
+				<?php  if (isset($_SESSION['user'])) : ?>
+					<strong><?php echo $_SESSION['user']['username']; ?></strong>
+
+					<small>
+						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
+						<br>
+						<a href="index.php?logout='1'" style="color: red;">logout</a>
+					</small>
+
+				<?php endif ?>
+			</div>
+		</div>
+	</div>
 <?php
 require 'menu.php';
 if (isset($_GET['main'])) {
