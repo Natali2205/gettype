@@ -1,44 +1,43 @@
 <?php 
+include "base.php"; 
+
 require 'header.php';
-	include('function.php');
 
-	if (!isLoggedIn()) {
-		$_SESSION['msg'] = "You must log in first";
-		require_once __DIR__ . '/login.php';
-	}
+if( isLogin()){
 
 
+   ?>
+ 
+    <h1>User Area</h1>
+    <p>Thanks for logging in! You are <code><?=$_SESSION['username']?></code> and your email address is</p>
+      
+   <?php
+}
+
+else
+{
+    ?>
+     
+   <h1>User Login</h1>
+     
+   <p>Thanks for visiting! Please either login below, or <a href="register.php">click here to register</a>.</p>
+     
+    <form method="post" action="index.php?login" name="loginform" id="loginform">
+    <fieldset>
+        <label for="username">Username:</label><input type="text" name="username" id="username" /><br />
+        <label for="password">Password:</label><input type="password" name="password" id="password" /><br />
+        <input type="submit" name="login" id="login" value="Login" />
+		
+    </fieldset>
+    </form>
+     
+   <?php
+   
+}
 ?>
 
-	<div class="content">
-		
-		<?php if (isset($_SESSION['success'])) : ?>
-			<div class="error success" >
-				<h3>
-					<?php 
-						echo $_SESSION['success']; 
-						unset($_SESSION['success']);
-					?>
-				</h3>
-			</div>
-		<?php endif ?>
-		<!-- logged in user information -->
-		<div class="profile_info">
 
-			<div>
-				<?php  if (isset($_SESSION['user'])) : ?>
-					<strong><?php echo $_SESSION['user']['username']; ?></strong>
 
-					<small>
-						<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
-						<br>
-						<a href="index.php?logout='1'" style="color: red;">logout</a>
-					</small>
-
-				<?php endif ?>
-			</div>
-		</div>
-	</div>
 <?php
 require 'menu.php';
 if (isset($_GET['main'])) {

@@ -1,7 +1,12 @@
+<?php
+session_start();
+include_once('function.php');
+?>
 <!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>MyTasks </title>
+    <title>Web-interface-for-MyTasks </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -20,12 +25,12 @@
             <li class="active"><a href="?main">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <?php if (isset($_SESSION['customer'])): ?>
-                <p>You are logged in as <?= $_SESSION['customer'] ?></p>
-                <li><a href="?logout">Logout<span class="glyphicon glyphicon-log-out"></span></a></li>
+            <?php if (isLogin()): ?>
+                <li><a href="?login"><span class="glyphicon glyphicon-log-in"></span> <?php echo $_SESSION['username']; ?></a></li>
+                <li><a href="?logout"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
             <?php else: ?>
-                <li><a href="?sign"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="?login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			    <li><a href="?login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <?php endif; ?>
         </ul>
     </div>
