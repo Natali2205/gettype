@@ -15,6 +15,7 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
     //$password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $password = $_POST['password'];
     $email =($_POST['email']);
+	 $connection=mysqli_connect("localhost", "root", "", "registration");
 	
 	print_r($username);
      
@@ -30,8 +31,12 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
         $registerquery = mysqli_query($connection,"INSERT INTO users (username, password, email) VALUES('".$username."', '".$password."', '".$email."')");
         if($registerquery)
         {
+			if (null!==$_SESSION['username']){
+		$_SESSION['success'] = "You are now logged in";
+		header('location: index.php');
             echo "<h1>Success</h1>";
             echo "<p>Your account was successfully created. Please <a href=\"index.php\">click here to login</a>.</p>";
+			
         }
         else
         {
@@ -39,7 +44,10 @@ if(!empty($_POST['username']) && !empty($_POST['password']))
             echo "<p>Sorry, your registration failed. Please go back and try again.</p>";    
         }       
      }
+	
 }
+
+		}
 else
 {
     ?>

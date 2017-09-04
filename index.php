@@ -2,14 +2,19 @@
 include "base.php"; 
 
 require 'header.php';
-
+if (loginAfterRegister()){
+	?>
+	
+	<p>Thanks for register in!You are <code><?=$_SESSION['username']?></code> </p>
+<?php	
+}
 if( isLogin()){
 
 
    ?>
  
     <h1>User Area</h1>
-    <p>Thanks for logging in! You are <code><?=$_SESSION['username']?></code> and your email address is</p>
+    <p>Thanks for logging in! You are <code><?=$_SESSION['username']?></code> </p>
       
    <?php
 }
