@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('function.php');
+//include_once('function.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,10 +26,11 @@ include_once('function.php');
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <?php if (isLogin()): ?>
-                <li><a href="?login"><span class="glyphicon glyphicon-log-in"></span> <?php echo $_SESSION['username']; ?></a></li>
-                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
-            <?php else: ?>
-                <li><a href="register.php?signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="?users"><span class="glyphicon glyphicon-check"></span> Users</a></li>
+                <li><a href="?login"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
+                <li><a href="?logout"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
+			<?php else: ?>
+                <li><a href="?register"><span class="glyphicon glyphicon-plus"></span> Sign Up</a></li>
 			    <li><a href="?login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <?php endif; ?>
         </ul>
