@@ -1,48 +1,33 @@
 <?php
 session_start();
 $page = 'login_form.php';
-/*if(isLogin()){
-	$page='welcom.php';
-}
-else{
-	$page='login_form.php';
-}*/
 
-$dbhost = "localhost";
-$dbname = "database";
-$dbuser = "username";
-$dbpass = "password";
-$connection = mysqli_connect("localhost", "root", "", "registration");
-mysqli_connect("localhost", "root", "", "registration") or die("MySQL Error: " . mysqli_error());
+$connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBBASE) or die("MySQL Error: " . mysqli_error());
 
 
 if (isset($_GET['logout'])) {
+    
     session_destroy();
-
+    unset($_SESSION);
 }
 if (isset($_GET['register'])) {
     $page = 'register_form.php';
-    
-      
-		if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
+
+    if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];
         $query = "INSERT INTO users (username, email, password)
 					  VALUES('$username', '$email', '$password')";
             $sel = mysqli_query($connection, $query);
-		}
-		 if ($sel) {
-                $_SESSION['username'] = $username;
-                $page = 'welcom.php';
-            }else {
+            
+        if ($sel) {
+            $_SESSION['username'] = $username;
+            $page = 'welcom.php';
+        } else {
              $errMSG = "Something went wrong, try again later..."; 
-			} 
-		 if (empty($username) || empty( $password) || empty($email)) {
-            $error ='ERROR! Please enter your valid name, email and password';
-			$page = 'register_form.php';
+        }
     }
-		
 }
 
 if (isset($_GET['login'])) {
@@ -51,26 +36,38 @@ if (isset($_GET['login'])) {
         $username = $_POST['username'];
         // $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
         $password = $_POST['password'];
-		$result = mysqli_query($connection, "SELECT * FROM users WHERE username = '" . $username . "'");
-        $checklogin = mysqli_fetch_array($result);
-        //print_r($checklogin);
-        if ($checklogin) {
-			$_SESSION['username'] = $checklogin['username'];
-            $page = 'welcom.php';
-		}  
-	} else if (empty($username) || empty( $password)) {
-		$errors ='ERROR! Please enter your valid name or password';
-	    $page = 'login_form.php';
-	}
-
+        $result = mysqli_query($connection, "SELECT * FROM users WHERE username = '" . $username . "'");
+        if ($result) {
+            $checklogin = mysqli_fetch_array($result);
+            if ($checklogin) {
+                $_SESSION['username'] = $checklogin['username'];
+                if ($checklogin['admin'] == 1) {
+                    $_SESSION['is_admin'] = true;
+                }
+                
+                $page = 'welcom.php';
+            }
+        }  else if (empty($username) || empty( $password)) {
+            $errors ='ERROR! Please enter your valid name or password';
+        }
+    } else if (empty($username) || empty( $password)) {
+        $errors ='ERROR! Please enter your valid name or password';
+    }
 }
 
 
 if (isset($_GET['users'])) {
     $page = 'users.php';
-    $result = mysqli_query($connection, "SELECT * FROM users ");
-    $USER = mysqli_fetch_array($result);
+    $result = mysqli_query($connection, "SELECT * FROM users");
+    $users = mysqli_fetch_all($result);
 }
+
+if (isset($_GET['user'])) {
+    $page = 'users.php';
+    $result = mysqli_query($connection, "SELECT * FROM users WHERE id=".$_GET['user']);
+    $users = mysqli_fetch_array($result);
+}
+
 
 function isLogin()
 {

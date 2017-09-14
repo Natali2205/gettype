@@ -1,4 +1,11 @@
-user:
+<pre>
 <?php
-print_r($USER);
+if (count($users) > 0 ) {
+    echo 'LIST  ....';
+    print_r($users);
+} else {
+    echo 'Not found';
+}
+
 ?>
+</pre>

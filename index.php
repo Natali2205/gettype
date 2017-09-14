@@ -1,4 +1,5 @@
 <?php 
+include 'config.php';
 include 'base.php'; 
 require 'header.php';
 include($page);
