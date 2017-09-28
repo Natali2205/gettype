@@ -3,9 +3,9 @@ session_start();
 $page = 'login_form.php';
 
 $connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBBASE) or die("MySQL Error: " . mysqli_error());
-$username = $_POST['username'];
-$password = $_POST['password'];
-$email = $_POST['email'];
+//$username = $_POST['username'];
+//$password = $_POST['password'];
+//$email = $_POST['email'];
 
 if (isset($_GET['logout'])) {
     
@@ -18,7 +18,7 @@ if (isset($_GET['register'])) {
 //	провірка чи існує юзер
 $sql =  'SELECT * from users WHERE username = "'.$username.'"';
 $res = mysqli_query($connection, $sql);
-//$row = mysqli_num_rows($res); // Если занят, то придет '1', если свободен, то придет '0'
+//$row = mysqli_num_rows($res); // занятий, то  '1', вільний, то '0'
 	if (empty($res)) {
 	
 		if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
@@ -60,11 +60,9 @@ if (isset($_GET['login'])) {
                 
                 $page = 'welcom.php';
             }
-        }  else if (empty($username) || empty( $password)) {
-            $errors ='ERROR! Please enter your valid name or password';
-        }
-    } else if (empty($username) || empty( $password)) {
-        $errors ='ERROR! Please enter your valid name or password';
+        } 
+    } else {
+      //  $errors ='ERROR! Please enter your valid name or password';
     }
 }
 

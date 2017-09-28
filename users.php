@@ -1,4 +1,5 @@
 <pre>
+<table class="table table-striped">
 <?php
 if (count($users) > 0 ) {
     echo 'LIST  ....';
@@ -8,4 +9,5 @@ if (count($users) > 0 ) {
 }
 
 ?>
+</table>
 </pre>
