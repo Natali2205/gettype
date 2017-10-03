@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/new_style.css" rel="stylesheet">
+    
 </head>
 <body>
 
@@ -25,7 +27,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isLogin()): ?>
                     <li class="active"><a href="?users"><span class="glyphicon glyphicon-check"></span> Users</a></li>
-                    <li class="active"><a href="?login"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
+                    <li class="active"><a href="?user=<?php echo $_SESSION['userId'];?>"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
                     <li class="active"><a href="?logout"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
                 <?php else: ?>
                     <li class="active"><a href="?register"><span class="glyphicon glyphicon-plus"></span> Sign Up</a></li>

@@ -13,7 +13,7 @@
 					<span class="visible-xs navbar-brand">Sidebar menu</span>
 					</div>
 					<div class="navbar-collapse collapse sidebar-navbar-collapse">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav myMenu">
 					<li class="active"><a href="#">Strings</a></li>
 					<li><a href="?task=1">register symbols</a></li>
 					<li><a href="?task=2">work with strlen</a></li>

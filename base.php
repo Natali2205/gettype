@@ -15,31 +15,35 @@ if (isset($_GET['logout'])) {
 
 if (isset($_GET['register'])) {
     $page = 'register_form.php';
-//	провірка чи існує юзер
-$sql =  'SELECT * from users WHERE username = "'.$username.'"';
-$res = mysqli_query($connection, $sql);
-//$row = mysqli_num_rows($res); // занятий, то  '1', вільний, то '0'
-	if (empty($res)) {
-	
+
+
 		if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$email = $_POST['email'];
-			$query = "INSERT INTO users (username, email, password)
+			//	провірка чи існує юзер
+            $sql =  'SELECT * from users WHERE username = "'.$username.'"';
+            $res = mysqli_query($connection, $sql);
+            $row = mysqli_num_rows($res); // занятий, то  '1', вільний, то '0'
+            if ($row == 0){
+                $query = "INSERT INTO users (username, email, password)
 						  VALUES('$username', '$email', '$password')";
 				$sel = mysqli_query($connection, $query);
-			
-				
-			if ($sel) {
-				$_SESSION['username'] = $username;
-				$page = 'welcom.php';
-			} else {
-				 $errMSG = "Something went wrong, try again later..."; 
-			}
-		}
-	} else{
-	echo "This name is registered";
-	}
+
+                if ($sel) {
+                    $_SESSION['userId'] = mysqli_insert_id($connections);
+                    $_SESSION['username'] = $username;
+                    $page = 'welcom.php';
+                } else {
+                     $errMSG = "Something went wrong, try again later..."; 
+                }
+	
+            } else{
+                $errMSG= "This name is registered";
+            }
+    
+    	}
+	
 	
 }
 
@@ -53,6 +57,7 @@ if (isset($_GET['login'])) {
         if ($result) {
             $checklogin = mysqli_fetch_array($result);
             if ($checklogin) {
+                $_SESSION['userId'] = $checklogin['id'];
                 $_SESSION['username'] = $checklogin['username'];
                 if ($checklogin['admin'] == 1) {
                     $_SESSION['is_admin'] = true;
@@ -70,7 +75,9 @@ if (isset($_GET['login'])) {
 if (isset($_GET['users'])) {
     $page = 'users.php';
     $result = mysqli_query($connection, "SELECT * FROM users");
-    $users = mysqli_fetch_all($result);
+    while(($row = mysqli_fetch_assoc($result))) {
+        $users[] = $row;
+    }
 }
 
 if (isset($_GET['user'])) {
@@ -82,7 +89,7 @@ if (isset($_GET['user'])) {
 
 function isLogin()
 {
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['username']) && isset($_SESSION['userId'])) {
         //$page='welcom.php';
         return true;
     } else {

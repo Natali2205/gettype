@@ -13,17 +13,17 @@
 </form>
 -->
 <?php require_once 'base.php'; ?>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="?login" method="POST">
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control" id="inputName" placeholder="Name">
+      <input name="username" type="text" class="form-control" id="inputName" placeholder="Name">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-2">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
   </div>
       <div class="form-group">

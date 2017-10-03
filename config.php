@@ -1,6 +1,7 @@
 <?php
+error_reporting(E_ALL);
 
 define('DBHOST', 'localhost');
 define('DBUSER', 'root');
-define('DBPASS', '');
-define('DBBASE', 'registration');
+define('DBPASS', 'root');
+define('DBBASE', 'mentorship');
